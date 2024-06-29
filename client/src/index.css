@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.head_text {
+    @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+}
+
+
+.logo_text {
+    @apply text-5xl font-extrabold leading-[1.15] text-orange-400 sm:text-2xl;
+}
+
+.orange_gradient {
+    @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+}
+
+.storage-prop{
+    max-width: 300px;
+    max-height: 200px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.alter-prop{
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
