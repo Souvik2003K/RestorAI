@@ -41,3 +41,5 @@ npm install
 ```
 npm run dev
 ```
+
+### Credits - jingyunliang/swinir
