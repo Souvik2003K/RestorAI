@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import PrevImg from './PrevImg';
 import NewImg from "./NewImg";
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
@@ -13,6 +14,7 @@ export default function Home() {
 
     const [image, setImage] = useState(null);
     const [viewImage, setViewImage] = useState(null);
+    const [restored, setRestored] = useState(null);
     const imageInputRef = useRef(null);
 
     const handleImageChange = (e) => {
@@ -31,15 +33,28 @@ export default function Home() {
         }
     };
 
-    const generate = (e) => {
+    const generate = async (e) => {
         e.preventDefault();
         try {
-            if(userSession){
-                alert('you can generate');
-            }
-            else{
-                navigate('/login');
-            }
+            // if(userSession){
+                const form = new FormData();
+                console.log("image before sending to backend", image)
+                form.append('file', image);
+                await axios.post('http://localhost:8000/user/generate', form,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }
+                ).then((res) => {
+                    setRestored(res.data.output);
+                }).catch((err) => {
+                    console.log(err);
+                });
+            // }
+            // else{
+            //     navigate('/login');
+            // }
         } catch (error) {
             console.log(error);
         }
@@ -81,7 +96,7 @@ export default function Home() {
         <section className="grid grid-cols-[4fr_0.5fr_4fr] mt-5 items-center">
             <PrevImg image={viewImage} />
             <ArrowRightAltIcon className="mx-auto" style={{fontSize: '60px'}} />
-            <NewImg />
+            <NewImg image={restored} />
         </section>
         <div className='flex justify-center my-5'>
             <button className='bg-orange-400 px-5 py-3 text-white rounded-xl font-bold' onClick={generate}>Generate</button>

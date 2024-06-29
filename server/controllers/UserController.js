@@ -1,5 +1,9 @@
 const User = require('../models/UserModel');
 const crypto = require('crypto');
+const fs = require("fs")
+const Replicate = require("replicate");
+
+const replicate = new Replicate();
 
 const signup = async (req, res) => {
     try {
@@ -24,6 +28,23 @@ const login = async (req, res) => {
         console.log(error);
     }
 }
+
+// const generate = async (req, res) => {
+
+//     const file = req.file;
+//     console.log(file)
+
+    
+
+
+//     const input = {
+//         jpeg: "40",
+//         image: fileBuffer,
+//         noise: "15"
+//     };
+//     const output = await replicate.run("jingyunliang/swinir:660d922d33153019e8c263a3bba265de882e7f4f70396546b6c9c8f9d47a021a", { input });
+//     console.log(output)
+// }
 
 
 module.exports = { signup, login };
