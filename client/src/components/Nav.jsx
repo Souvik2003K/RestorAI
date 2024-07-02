@@ -10,7 +10,7 @@ export default function Nav() {
         e.preventDefault();
         localStorage.removeItem('user');
         navigate('/');
-        // window.location.reload();
+        window.location.reload();
     }
 
     console.log(userSession);
@@ -21,7 +21,7 @@ export default function Nav() {
                 <h1 className='font-bold logo_text cursor-pointer'>
                 <Link to='/'>RestorAI</Link>
                 </h1>
-                {/* {userSession ?  
+                {userSession ?  
                 <button className='bg-orange-400 px-5 py-3 text-white rounded-xl font-bold' onClick={logout}>
                     <Link to='/login'>Logout</Link>
                 </button> : 
@@ -32,7 +32,7 @@ export default function Nav() {
                     <button className='bg-orange-400 px-5 py-3 text-white rounded-xl font-bold'>
                         <Link to='/signup'>Sign Up</Link>
                     </button>
-                </div>} */}
+                </div>}
 
             </div>
         </nav>
