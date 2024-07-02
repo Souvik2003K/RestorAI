@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 const port = process.env.PORT || 8000;
-const uri = `mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_USERNAME}@mongosocio.vtpscar.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority&appName=MongoSocio`;
+const uri = `mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@mongosocio.vtpscar.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority&appName=MongoSocio`;
 
 
 mongoose.connect(uri).then(() => {
